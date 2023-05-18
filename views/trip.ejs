@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1> Your Trips </h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <a href="/booking" class="btn btn-default btn-sm">Book A Trip</a>
+    </div>
+
+<div>
+    <h1><%= trip.destination %></h1>
+    <span><%= trip.start %>-<%= trip.end %></span>
+    <button>Create an AI-generated itinerary</button>
+    <form action="invite/<%=trip._id %>" method="POST">
+    <button type="submit">send invite to friend</button>
+    <select name="invitedFriend">
+    <% contacts.forEach((contact)=>{ %>
+        <option value="<%=contact._id%>"><%= contact.friendName%></option>
+   <% }) %>
+    </select>
+</form>
+        <a href="../food/<%= trip.destination %>"><button>Get Nearby Food Recommendations</button></a>
+</div>
+
+        </div>
+</div>
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

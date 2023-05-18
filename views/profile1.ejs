@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title> My Demo Day</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<header>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li class="active"><a href="/index">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/booking" class="btn-2">Book A Trip</a></li>
+        <li><a href="/contacts" class="btn-2">Contacts</a></li>
+        <li><a href="/trips" class="btn-2">Your Trips</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<body>
+<div>
+  <% for(let i = 0; i < trips.length; i++){ %>
+<a href="/trips/<%= trips[i]._id%>"><%=trips[i].destination %> </a>
+   <%} %>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
