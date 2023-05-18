@@ -15,8 +15,6 @@
     			$('.js-gtco-nav-toggle').removeClass('active');
 				
 	    	}
-	    
-	    	
 	    }
 		});
 
@@ -239,9 +237,7 @@
 			} else {
 				$('.js-top').removeClass('active');
 			}
-
 		});
-	
 	};
 
 

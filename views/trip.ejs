@@ -18,7 +18,7 @@
     <span><%= trip.start %>-<%= trip.end %></span>
     <button>Create an AI-generated itinerary</button>
     <form action="invite/<%=trip._id %>" method="POST">
-    <button type="submit">send invite to friend</button>
+    <button type="submit" id="sendButton"> Send invite to friend</button>
     <select name="invitedFriend">
     <% contacts.forEach((contact)=>{ %>
         <option value="<%=contact._id%>"><%= contact.friendName%></option>
@@ -31,7 +31,7 @@
         </div>
 </div>
 
-<script src="/js/main.js"></script>
+<script src="/public/js/trip.js"></script>
 
 </body>
 </html>

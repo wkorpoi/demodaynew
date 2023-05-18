@@ -1,4 +1,7 @@
 const { ObjectId } = require("mongodb");
+const accountSid = 'AC8599b0c30c5231841b5abdc16c568373';
+const authToken = 'd49f2325220f76f8c549f8042874fa81';
+const client = require('twilio')(accountSid, authToken);
 
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
@@ -19,7 +22,6 @@ module.exports = function (app, passport, db) {
     });
   });
   
-
   app.get("/contacts", isLoggedIn, function (req, res) {
     db.collection("contacts")
       .find({ currentUser: req.user.local.email })
@@ -32,19 +34,19 @@ module.exports = function (app, passport, db) {
       });
   });
 
-  app.get("/contacts", function (req, res) {
+  app.get("/api/test", function (req, res) {
     client.messages
       .create({
-        body: "You've been invited to my trip to ",
+        body:"You have been invited to my trip",
         from: "+18556422716",
         to: "+12157910642",
       })
       .then((message) => {
         console.log("message sent!", message.sid);
-        res.redirect("/contacts");
       })
       .catch((error) => console.error(error));
   });
+
   app.get("/profile", isLoggedIn, function (req, res) {
     const currentUser = req.user.local.email;
     db.collection("trips")
@@ -64,30 +66,6 @@ module.exports = function (app, passport, db) {
       destination: destination,
     });
   });
-
-  // app.get("/trips/:id", isLoggedIn, function (req, res) {
-  //   const tripId = req.params.id;
-  //   console.log( db.collection("trips").findOne({ _id: tripId }))
-  //   console.log("tripId:", tripId)
-  //   db.collection("contacts")
-  //     .find({ currentUser: req.user.local.email })
-  //     .toArray((err, contacts) => {
-  //       async function getTrip(){
-  //        let tripData = await db.collection("trips").findOne({ _id: tripId })// using findOne instead of find for Mongoose  
-  //           .toArray((err, trip) => {
-  //           console.log(trip);
-  //           if (err) return console.log(err);
-  //           res.render("trip.ejs", {
-  //             user: req.user,
-  //             trip: trip[0],
-  //             contacts,
-  //           });
-  //         });
-  //       }
-  //       getTrip()
-  //     });
-  // });
-
 
 app.get('/trips/:id', isLoggedIn, function (req, res) {
   const tripId = req.params.id;
