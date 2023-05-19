@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/trip.css">
 </head>
 
 <body>
@@ -9,25 +9,24 @@
 
     <div class="page-header text-center">
         <h1> Your Trips </h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-        <a href="/booking" class="btn btn-default btn-sm">Book A Trip</a>
+        <button href="/logout" class="button2">Logout</button>
+        <button href="/booking" class="button2">Book A Trip</button>
     </div>
 
-<div>
+<div> 
     <h1><%= trip.destination %></h1>
     <span><%= trip.start %>-<%= trip.end %></span>
-    <button>Create an AI-generated itinerary</button>
+    <button class="button2">Create an AI-generated itinerary</button>
     <form action="invite/<%=trip._id %>" method="POST">
-    <button type="submit" id="sendButton"> Send invite to friend</button>
+    <button type="submit" id="sendButton" class="button2"> Send invite to friend</button>
     <select name="invitedFriend">
     <% contacts.forEach((contact)=>{ %>
         <option value="<%=contact._id%>"><%= contact.friendName%></option>
    <% }) %>
     </select>
 </form>
-        <a href="../food/<%= trip.destination %>"><button>Get Nearby Food Recommendations</button></a>
+        <a href="../food/<%= trip.destination %>"><button class="button2">Get Nearby Food Recommendations</button></a>
 </div>
-
         </div>
 </div>
 
