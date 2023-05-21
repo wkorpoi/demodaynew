@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("sendButton"); // Replace "sendButton" with the ID of your button
   
     button.addEventListener("click", function () {
+      console.log('hi')
       fetch("/api/test", {
         method: "GET",
       })

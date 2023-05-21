@@ -103,19 +103,12 @@
 								<div class="tab">
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<h3>Name 5 Things You're Interested In Seeing or Doing.</h3>
+											<h3>What is your budget?</h3>
 											<form action="/add" method="post">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="destination">Destination</label>
-														<input name="interests" placeholder="What do you want to do in <%=trips[i].destination %> ?">
-													</div>
-												</div>
-												
-												<div class="row form-group">
-													<div class="col-md-12">
-														<label for="budget">How Much Do You Want to Spend? </label>
-														<input type="numbers" name="budget" placeholder="What do you want to do in <%=trips[i].destination %> ?">
+														<label for="budget">Budget</label>
+														<input type="numbers"  name="budget" placeholder="How much do you plan on spending in <%=trips[i].destination %> ?">
 													</div>
 												</div>
 
@@ -125,12 +118,14 @@
 													</div>
 												</div>
 											</form>	
-                                      </div>
+                                        </div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+							
+					
 				</div>
 			</div>
 		</div>

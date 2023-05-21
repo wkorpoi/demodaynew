@@ -1498,10 +1498,6 @@ form label {
   background: url(../images/loader.gif) center no-repeat #fff;
 }
 
-.js .animate-box {
-  opacity: 0;
-}
-
 @media screen and (max-width: 768px) {
   .gtco-nav .gtco-contact {
     text-align: left !important;

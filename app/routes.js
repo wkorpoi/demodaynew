@@ -1,6 +1,6 @@
 const { ObjectId } = require("mongodb");
-const accountSid = 'AC8599b0c30c5231841b5abdc16c568373';
-const authToken = 'd49f2325220f76f8c549f8042874fa81';
+const accountSid = "AC8599b0c30c5231841b5abdc16c568373";
+const authToken = "7238944b373a6cfc5384f66cc59bb63d";
 const client = require('twilio')(accountSid, authToken);
 
 module.exports = function (app, passport, db) {

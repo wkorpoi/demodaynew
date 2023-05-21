@@ -10,7 +10,6 @@ body {
   font-family: "Passion One", sans-serif;
   color: white;
 }
-
 h1,
 h2 {
   margin: 0;
@@ -34,7 +33,10 @@ a:hover {
     color: #dddddd;
     border-color: #dddddd;
   }
-  
+
+.destinationTitle{
+    text-transform: capitalize;
+    }
 .content {
   display: flex;
   flex-direction: column;
@@ -81,7 +83,7 @@ a:hover {
 .toleft {
   margin-right: 50%;
 }
-
+/* 
 a.button2 {
   display: inline-block;
   padding: 0.5em 3.1em;
@@ -103,7 +105,7 @@ a.button2:hover {
 a.button2:active {
   color: #bbbbbb;
   border-color: #bbbbbb;
-}
+} */
 @media all and (max-width: 30em) {
   a.button2 {
     display: block;
@@ -111,6 +113,61 @@ a.button2:active {
   }
 }
 
-.stuff{
-    text-align: center;
+/* BUTTON CSS */
+.button-13, .select-13{
+  align-items: center;
+  background-color: rgba(240, 240, 240, 0.26);
+  border: 1px solid #DFDFDF;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  line-height: 28px;
+  max-width: 100%;
+  padding: 14px 22px;
+  text-decoration: none;
+  transition: all .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 50%;
 }
+
+.button-13:active,
+.button-13:hover,
+.select-13:active,
+.select-13:hover {
+  outline: 0;
+}
+
+.button-13:hover,
+.select-13:hover  {
+  background-color: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.19);
+}
+
+@media (min-width: 768px) {
+  .button-13,
+  select-13 {
+    font-size: 20px;
+    min-width: 200px;
+    padding: 14px 16px;
+  }
+}
+
+body > div.stuff{
+  margin-left: 33%;
+}
+
+.friend{
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+

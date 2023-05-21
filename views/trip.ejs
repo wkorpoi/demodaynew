@@ -4,6 +4,7 @@
     <title>The Travel Guru</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600|Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/trip.css">
+
 </head>
   <body>
 
@@ -18,27 +19,28 @@
 	      <h2> <a href="/logout"class="nav-4"> LOGOUT </a></h2>
 	    </section>
 
+    <h1 class="destinationTitle"><%= trip.destination %></h1>
+    
     <div class="stuff"> 
-    <h1><%= trip.destination %></h1>
-    <!-- <span><%= trip.start %>-<%= trip.end %></span> -->
-    <button class="button2">Create an AI-generated itinerary</button>
-    <form action="invite/<%=trip._id %>" method="POST">
-    <button type="submit" id="sendButton" class="button2"> Send invite to friend</button>
-    <select name="invitedFriend">
-    <% contacts.forEach((contact)=>{ %>
-        <option value="<%=contact._id%>"><%= contact.friendName%></option>
-   <% }) %>
-    </select>
-</form>
-        <a href="../food/<%= trip.destination %>"><button class="button2">Get Nearby Food Recommendations</button></a>
-</div>
+
+      
+      <a href="../food/<%= trip.destination %>"><button class="button-13" role="button"> Create an Itinerary </button></a>
+      <a href="../food/<%= trip.destination %>"><button class="button-13">Food Recommendations</button></a>
+      <form>
+        <div class="friend">
+            <select name="invitedFriend" class="select-13">
+          <% contacts.forEach((contact)=>{ %>
+              <option value="<%=contact._id%>"><%= contact.friendName%></option>
+          <% }) %>
+          </select>
+          <button type="submit" id="sendButton" class="button-13" role="button"> Invite Friend </button>
         </div>
-</div>
+      </form>
 
+    </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjF4bqBu5j4eX7WU_EUnvlFRTkvs8iLac&libraries=places"></script>
-<script src="/public/js/trip.js"></script>
+<script src="/js/trip.js"></script>
 <script type="text/javascript" src="javascript/jquery-2.2.4.js"></script>
-
 
 </body>
 </html>

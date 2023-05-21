@@ -43,10 +43,19 @@ p, ul, ol {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #5a5a5a;
+  color: white;
   font-family: "Raleway", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 30px 0;
+}
+
+.destinationTitle{
+  text-transform: capitalize;
+}
+.image-wrapper > img {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
 }
 
 figure {
@@ -755,10 +764,6 @@ figure {
 }
 .btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active {
   border-color: transparent;
-}
-
-.js .animate-box {
-  opacity: 0;
 }
 
 #fh5co-wrapper {
