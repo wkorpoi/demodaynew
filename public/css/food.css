@@ -1,3 +1,7 @@
+body{
+    background: #09C6AB;
+    font-family: "Passion One", sans-serif;
+}
 .rec {
     border-radius: 8px;
     background: white;
@@ -14,9 +18,6 @@ h1{
     width: 88%;
 }
 
-body{
-    background: #09C6AB;
-}
 
 ul{
     list-style: none;

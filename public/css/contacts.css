@@ -1,7 +1,84 @@
 body {
   background: #09C6AB;
+  margin: 0;
+  font-family: "Passion One", sans-serif;
+  color: black;
 }
 
 .add btn btn-info btn-block mt-3{
   background: #09C6AB;
+}
+
+h1, h2 {
+  margin: 0;
+}
+h1 {
+  padding: 50px 0;
+  color: white;
+  text-align: center;
+  font-size: 60px;
+  
+}
+h2 {
+  padding: 25px 0;
+}
+h3 {
+  padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+    color: #dddddd;
+    border-color: #dddddd;
+  }
+   
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 1000px;
+  position: absolute;
+  top: 225px;
+  width: 100%;
+  z-index: -1;
+}
+
+.main-header {
+  display: flex;
+  justify-content: center;
+  background: #43b29d;
+  position: relative;
+  top: 0;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: darkcyan;
+  transition: background .5s
+}
+
+.nav-1 {
+  transition: margin-right .5s ease;
+}
+
+.content {
+  background: #c0c0c3;
+  color: #414041;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: darkslategrey;
+}
+
+.toleft {
+  margin-right: 50%;
 }

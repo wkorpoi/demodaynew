@@ -7,8 +7,13 @@ body {
   flex-direction: column;
   margin: 0px;
   overflow-x: hidden;
+  font-family: "Passion One", sans-serif;
 }
 
+h1{
+  color: white;
+  font-weight: bold;
+}
 .navbar {
   /* position: fixed; */
   display: flex;

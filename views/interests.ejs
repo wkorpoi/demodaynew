@@ -72,10 +72,9 @@
 				<div class="col-sm-4 col-xs-12">
 					<ul>
 						<li class="has-dropdown">
-							<a href="#">Account</a>
+							<a href="/">ACCOUNT</a>
 							<ul class="dropdown">
-								<li><a href="/signup">Sign Up</a></li>
-								<li><a href="/login">Log In</a></li>
+								<li><a href="/logout">LOGOUT</a></li>
 							</ul>
 						</li>
 					</ul>	
@@ -88,61 +87,61 @@
 		</div>
 	</nav>
 	
-	<div id="gtco-features">
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(/images1/background.png);">
+		<div class="overlay"></div>
 		<div class="gtco-container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-					<img src="/images/TheJourneyGuru.jpg">
-					<h2>Planning a Trip?</h2>
-					<p> The Journey Guru gives you the opportunity to plan your trip, your way. Traveling is an experience, planning should be too! The Travel Guru will create a travel itenery for you by simply saying where you're going and what your interests are. Use the share feature to share the itenery with your travel buddies. </p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>1</i>
-						</span>
-						<h3>Step One</h3>
-						<p>Insert where you'd like to travel anywhere in the world.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>2</i>
-						</span>
-						<h3>Step Two</h3>
-						<p>Tell the app what your intersts are and let it auto-generate a full itnerary for you. 
-						</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>3</i>
-						</span>
-						<h3>Step Three</h3>
-						<p>Share with your travel buddies!</p>
-					</div>
-				</div>
-				
+				<div class="col-md-12 col-md-offset-0 text-left">
+					
 
+					<div class="row row-mt-15em">
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1>What are you interested in doing in <%=trips[i].destination %> </h1>	
+						</div>
+						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+							<div class="form-wrap">
+								<div class="tab">
+									<div class="tab-content">
+										<div class="tab-content-inner active" data-content="signup">
+											<h3>Book Your Trip</h3>
+											<form action="/add" method="post">
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="destination">Destination</label>
+														<input name="interests" placeholder="What do you want to do in <%=trips[i].destination %> ">
+													</div>
+												</div>
+												
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="date-start">Start Date</label>
+														<input name="startDate" type="text" id="date-start" class="form-control">
+													</div>
+													<div class="col-md-12">
+														<label for="date-end">End Date</label>
+														<input name="endDate" type="text" id="date-end" class="form-control">
+													</div>
+												</div>
+
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" class="btn btn-primary btn-block" value="Submit">
+													</div>
+												</div>
+											</form>	
+                                      </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+					
+				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<div class="gtco-cover gtco-cover-sm" style="background-image: url(/images1/background.png)"  data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="gtco-container text-center">
-			<div class="display-t">
-				<div class="display-tc">
-					<h1>We have high quality services that you will surely love!</h1>
-				</div>	
-			</div>
-		</div>
-	</div>
+	</header>
 	<!-- </div> -->
 
 	</div>
@@ -180,4 +179,3 @@
 
 	</body>
 </html>
-

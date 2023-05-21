@@ -251,5 +251,4 @@ const waitForImages = () => {
     });
   });
 };
-
 waitForImages();

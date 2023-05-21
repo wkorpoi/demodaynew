@@ -48,17 +48,28 @@ module.exports = function (app, passport, db) {
   });
 
   app.get("/profile", isLoggedIn, function (req, res) {
+    const pictureApi = [];
     const currentUser = req.user.local.email;
     db.collection("trips")
       .find({ user: currentUser })
-      .toArray((err, trips) => {
+      .toArray(async (err, trips) => {
         if (err) return console.log(err);
+        for (let i = 0; i < trips.length; i++){
+          // let destination = await fetchPic(trips.destination)
+          const data = await fetch(`https://api.unsplash.com/search/photos/?page=1&query=${trips[i].destination}.&client_id=5_9_CrMvsD7kOY3XGyIzuylcKWaxUvSfDUf1tC4ldBk`);
+          const destination = await data.json()
+          pictureApi.push(destination)
+        }
+        console.log(pictureApi)
+
         res.render("profile.ejs", {
           user: req.user,
           trips,
+          pictureApi,
         });
       });
   });
+
   app.get("/food/:destination", isLoggedIn, function (req, res) {
     console.log(req.params.destination);
     const destination = req.params.destination;
@@ -223,4 +234,9 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
 
   res.redirect("/");
+}
+
+async function fetchPic(destination){
+  const data = await fetch(`https://api.unsplash.com/search/photos/?page=1&query= ${destination}.&client_id=5_9_CrMvsD7kOY3XGyIzuylcKWaxUvSfDUf1tC4ldBk`);
+  return await data.json
 }
