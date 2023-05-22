@@ -1,7 +1,8 @@
 const { ObjectId } = require("mongodb");
 const accountSid = "AC8599b0c30c5231841b5abdc16c568373";
-const authToken = "7238944b373a6cfc5384f66cc59bb63d";
-const client = require('twilio')(accountSid, authToken);
+const authToken = "f84864d936d1d39b84c24818f093d08f";
+const client = require("twilio")(accountSid, authToken);
+require('dotenv').config();
 
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
@@ -34,10 +35,18 @@ module.exports = function (app, passport, db) {
       });
   });
 
-  app.get("/api/test", function (req, res) {
+  app.get("/api/test", async function (req, res) {
+  
+    const query = {email: req.user.local.email}
+    const obj =  await db.collection('itenery').findOne(query);
+    const trip = obj.trip;
+    // const mesg = obj.trip;
+    console.log("THIS IS THE TRIP MESG");
+    console.log(trip)
+  
     client.messages
       .create({
-        body:"You have been invited to my trip",
+        body: `You've been invited to ${obj.destination} . Here is the iteniery for ${trip}`,
         from: "+18556422716",
         to: "+12157910642",
       })
@@ -137,6 +146,7 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
         start: req.body.startDate,
         end: req.body.endDate,
         user: req.user.local.email,
+        interests: req.body.interests
       },
       (err, result) => {
         if (err) return console.log(err);
@@ -146,6 +156,79 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
       }
     );
   });
+
+  app.get("/submitrequest", isLoggedIn, async function (req, res) {
+    const currentUser = req.user.local.email;
+    const destinationId = req.user._id;
+
+    const collection = db.collection("trips")
+    const query = {user : currentUser, destination : destinationId}
+    const obj = await collection.findOne(query)
+    console.log(obj)
+
+    const currentUserDestination = obj.destination
+    const currentUserStartDate = obj.start
+    const currentUserEndDate = obj.end
+    const interests = obj.interests
+    const phoneNumber = req.user.local.phoneNumber
+
+    const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+
+    const key = process.env.OPENAI_API_KEY
+    const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${key}`,
+  };
+
+  const messages = [
+    { role: 'user', content: `Create an itinerary for a trip to ${currentUserDestination} from ${currentUserStartDate} to ${currentUserEndDate}. Include ${interests}` },
+  ];
+  
+    const data = {
+      messages: messages,
+      model: 'gpt-3.5-turbo',
+    };
+
+  fetch(API_ENDPOINT, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(data),
+  })
+    .then(response => response.json())
+    .then(result => {
+      // Handle the API response
+      const newTrip = result.choices[0].message.content 
+      console.log(newTrip);
+      db.collection("itenery").insertOne(
+        {
+          trip: newTrip,
+          email: req.user.local.email,
+          location: obj.destination,
+        },
+        (err, result) => {
+          if (err) return console.log(err);
+          console.log("saved to database");      
+        }
+      );
+
+      client.messages
+      .create({
+        body: `Here is the iteniery for ${newTrip}`,
+        from: "+18556422716",
+        to: "+12157910642",
+      })
+      .then((message) => {
+        console.log("message sent!", message.sid);
+      })
+      .catch((error) => console.error(error));
+
+    })
+    .catch(error => {
+      // Handle error
+      console.error(error);
+    });
+    
+      });
 
   app.post("/addFriend", (req, res) => {
     console.log(req.body);

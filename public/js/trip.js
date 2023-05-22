@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => {
           if (response.ok) {
             console.log("Message sent!");
+            alert('Invite Sent!');
           } else {
             console.error("Error sending message:", response.statusText);
           }
@@ -18,6 +19,26 @@ document.addEventListener("DOMContentLoaded", function () {
     
   });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("itinerary"); // Replace "sendButton" with the ID of your button
+  
+    button.addEventListener("click", function () {
+      console.log('hi')
+      fetch("/submitrequest", {
+        method: "GET",
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Message sent!");
+            alert('Itinerary Sent!');
+          } else {
+            console.error("Error sending message:", response.statusText);
+          }
+        })
+        .catch((error) => console.error("Error sending message:", error));
+    });
+    
+  });
 
 $(document).ready(function(){
 	$(window).bind('scroll', function() {
@@ -32,6 +53,3 @@ $(document).ready(function(){
 		 }
 	});
 });
-  
-
-
