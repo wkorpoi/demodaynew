@@ -157,12 +157,11 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
     );
   });
 
-  app.get("/submitrequest", isLoggedIn, async function (req, res) {
+  app.get("/submitrequest/:tripId", isLoggedIn, async function (req, res) {
     const currentUser = req.user.local.email;
-    const destinationId = req.user._id;
 
     const collection = db.collection("trips")
-    const query = {user : currentUser, destination : destinationId}
+    const query = {_id : ObjectId (req.params.tripId)}
     const obj = await collection.findOne(query)
     console.log(obj)
 
@@ -210,17 +209,6 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
           console.log("saved to database");      
         }
       );
-
-      client.messages
-      .create({
-        body: `Here is the iteniery for ${newTrip}`,
-        from: "+18556422716",
-        to: "+12157910642",
-      })
-      .then((message) => {
-        console.log("message sent!", message.sid);
-      })
-      .catch((error) => console.error(error));
 
     })
     .catch(error => {

@@ -12,7 +12,7 @@
 *
 * ======================================================= */
 body {
-  font-family: "Raleway", Arial, sans-serif;
+  font-family: "Passion One", sans-serif;
   line-height: 1.6;
   font-size: 16px;
   background: #121212;
@@ -47,6 +47,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 30px 0;
+}
+
+h1{
+  color: white;
+  text-align: center;
+  font-size: 60px;
 }
 
 .destinationTitle{
