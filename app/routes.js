@@ -1,8 +1,6 @@
 const { ObjectId } = require("mongodb");
-const accountSid = "AC8599b0c30c5231841b5abdc16c568373";
-const authToken = "f84864d936d1d39b84c24818f093d08f";
-const client = require("twilio")(accountSid, authToken);
 require('dotenv').config();
+const nodemailer = require('nodemailer')
 
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
@@ -204,13 +202,47 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
           email: req.user.local.email,
           location: obj.destination,
         },
+        
         (err, result) => {
           if (err) return console.log(err);
           console.log("saved to database");      
         }
       );
-
     })
+    .then( async result => {
+      try {
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+            user: 'wadiyakorpoi@gmail.com',
+            pass: 'aiafxkwzkvjejfyh'
+          }
+        });
+        var mailOptions = {
+          from: 'wadiyakorpoi@gmail.com',
+          to: req.user.local.email,
+          subject: 'Your My Travel Guru Itinery',
+          text: `Here is your itinery from The Travel Guru ${key}`
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Saved! ' + info.response);
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    
+    })
+
+
+
+
     .catch(error => {
       // Handle error
       console.error(error);
@@ -223,7 +255,7 @@ app.get('/trips/:id', isLoggedIn, function (req, res) {
     db.collection("contacts").insertOne(
       {
         friendName: req.body.name,
-        phoneNumber: req.body.number,
+        email: req.body.email,
         currentUser: req.user.local.email,
       },
       (err, result) => {

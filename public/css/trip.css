@@ -83,6 +83,7 @@ a:hover {
 .toleft {
   margin-right: 50%;
 }
+
 /* 
 a.button2 {
   display: inline-block;
@@ -159,9 +160,15 @@ a.button2:active {
     padding: 14px 16px;
   }
 }
+#widget-holder{
+  margin-left: 25%;
+  margin-bottom: 2%;
+  width: 50%;
+}
 
 body > div.stuff{
   margin-left: 33%;
+  margin-bottom: 2%;
 }
 
 .friend{

@@ -21,8 +21,7 @@
 
     <h1 class="destinationTitle"><%= trip.destination %></h1>
 
-    <div class="stuff"> 
-
+    <div class="stuff">
       
       <a href="/submitrequest/<%=trip._id%>"><button class="button-13" role="button" id="itinerary"> Create an Itinerary </button></a>
       <a href="../food/<%= trip.destination %>"><button class="button-13">Food Recommendations</button></a>
@@ -36,8 +35,12 @@
           <button type="submit" id="sendButton" class="button-13" role="button"> Invite Friend </button>
         </div>
       </form>
-
     </div>
+    
+    <div id="widget-holder">
+      <script data-affilid="wadiyamkdemoday" src="https://widgets.kiwi.com/scripts/widget-search-iframe.js"></script>
+    </div>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjF4bqBu5j4eX7WU_EUnvlFRTkvs8iLac&libraries=places"></script>
 <script src="/js/trip.js"></script>
 <script type="text/javascript" src="javascript/jquery-2.2.4.js"></script>

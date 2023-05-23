@@ -19,6 +19,7 @@
     "mongoose": "^5.13.17",
     "morgan": "^1.9.1",
     "mpath": ">=0.5.1",
+    "nodemailer": "^6.9.2",
     "openai": "^3.2.1",
     "passport": "^0.6.0",
     "passport-facebook": "~2.1.1",
